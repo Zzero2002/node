@@ -48,20 +48,20 @@ app.get("/deletecontact",function(req,res){
     let contactindex = contact.findIndex(cont=>cont && cont.id==req.query.id);
 
     // contact.splice(contactindex,1);
-    savecontfile();
     delete contact[contactindex];
+    savecontfile();
 
     res.send({msg:"contact deleted"})
 })
 
 
 app.post("/editcontact",formparser,function(req,res){
-    savecontfile();
    let cont =  contact.find(conty=>conty && conty.id==req.body.id);
 
    cont.name = req.body.name;
    cont.email = req.body.email;
    cont.tel = req.body.tel;
+   savecontfile();
 
     res.send({msg:"emp edited"})
 })
